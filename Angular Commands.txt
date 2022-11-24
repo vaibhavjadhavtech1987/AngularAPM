@@ -1,0 +1,108 @@
+npm install
+npm start
+npm install -g @angular/cli
+ng new apm-new --prefix pm (new Project)
+-------------------
+Bootstrap 
+npm install bootstrap font-awesome
+-------------------
+Binding
+1.Interpolation  {{}}
+2.PropertyBinding []
+3.Two way binding   [(ngModel)] 
+	--need to specify FormModule in Appmodel
+*ngIf,*ngFor
+------------------
+Life Cycle hooks
+OnInit
+Onchanges
+OnDestroy
+-----------------
+Custom Pipe 
+@Pipe
+PipeTransform
+---------------
+Getter and Setter
+------------------
+Nested Component
+	[rating]='product.starRating'  --Parent
+	@Input() rating:number=4;      --Child	
+
+
+Event Binding Child to Parent
+
+Child:
+@Output()  ratingClicked:EventEmitter<string> =new EventEmitter<string>();
+OnClick():void{
+      console.log('Click rating -',this.rating);  
+      this.ratingClicked.emit('Rating Emitted to Parent -'+ this.rating)
+    }
+
+Parent:
+<td><pm-star [rating]='product.starRating'
+             (ratingClicked)='OnRatingClicked($event)' ></pm-star></td>
+
+OnRatingClicked(message:string):void{
+            this.pageTitle = message ;
+        }
+--------------------
+Service and Dependecy Injection
+
+ProductService 
+import { Injectable } from "@angular/core";
+@Injectable({
+    providedIn: 'root'
+})
+export class ProductService {}
+
+
+ProductListCompoennt
+constructor(private productService: ProductService ){} 
+ngOnInit(): void {
+    this.products = this.productService.getProducts();
+  }
+
+
+Registering Service
+Root Injector
+Component Injector
+------------------------------
+DataRetrieve using HTTP
+RxJS (Reactive Extensions)  ---HttpRequest Async
+Observable ,range,map,fiter from rxjs
+Pipe
+
+appModule
+import { HttpClientModule} from '@angular/common/http'
+@NgModule({
+imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule
+  ],
+
+subscribe nextFn,errorFn
+this.productService.getProducts().subscribe({
+            next: products=>{
+              this.products =products;
+              this.filterproducts =this.products;
+            },
+            error:err=>{
+              this.erroMessgae=err
+            }
+          });
+          this.listFilter=''
+        }
+--------------------------
+Angular cLI
+ng g c product/product-detail --flat
+----------------
+Routing
+----
+Gaurd
+ng g g product/product-detail
+canActivate
+-----------------------
+
+
+

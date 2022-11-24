@@ -1,4 +1,7 @@
-<div style="text-align:center">
-  <h1> Welcome to {{pageTitle}}!! </h1>
-  <pm-products></pm-products>
-</div>
+<nav class="navabar navbar-expand navbar-light bg-light">
+  <a class="nvabar-brand ">{{pageTitle}}</a>
+  <ul class="nav navabar-nav">
+    <li> <a [routerLink]="['/Welcome']">Home </a></li>
+    <li> <a [routerLink]="['/product']">Product List</a></li>
+  </ul>
+</nav>

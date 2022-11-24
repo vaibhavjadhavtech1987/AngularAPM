@@ -40,7 +40,13 @@
                              [style.width.px]='imageWidth'  
                              [style.margin.px]='imageMargin' *ngIf="ShowImage" >
                        </td>
-                       <td>{{product.productName}}</td>
+                       <!-- <td>{{product.productName}}</td> -->
+                       <td> 
+                        <a class='nav-link' 
+                            [routerLink]="['/product',product.productId]"> 
+                        {{product.productName}} 
+                        </a>
+                        </td>
                        <td>{{product.productCode | lowercase | ConvertToSpaces:'-'}}</td>
                        <td>{{product.releaseDate}}</td>
                        <td>{{product.price | currency:'USD':'symbol':'1.2-2'}}</td>

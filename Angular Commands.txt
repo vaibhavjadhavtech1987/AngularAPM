@@ -103,6 +103,19 @@ Gaurd
 ng g g product/product-detail
 canActivate
 -----------------------
+Angular Modul
+Declares (component,Directive, Pipe)
+Bootstrap
+Import 
+Export
 
+------------
+Welcome
+Star
+Product 
+
+ng g m product/product --flat -m app
+ng g m shared/shared --flat -m product
+-------------
 
 
